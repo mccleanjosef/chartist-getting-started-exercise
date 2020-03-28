@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="css/custom.css">
+<link rel="stylesheet" href="chartist-js-develop/dist/chartist.min.css">
+<link href="https://fonts.googleapis.com/css?family=Spicy+Rice&display=swap" rel="stylesheet">
+
+<head>
+	<meta charset="UTF-8">
+	<title>My First Chartist Tests</title>
+</head>
+
+<body>
+	<!--  Site content goes here ! -->
+	<h1>1. Line Chart with a fixed aspect ratio in a container</h1>
+	<div class="chart1-container">
+		<div class="ct-chart ct-perfect-fifth" id="chart1"></div>
+	</div>
+	<h1>2. Line Chart with fixed dimensions</h1>
+	<div class="chart2-container">
+		<div class="ct-chart " id="chart2"></div>
+	</div>
+	<h1>3. Configuring a Line Chart</h1>
+	<div class="chart3-container">
+		<div class="ct-chart ct-golden-section" id="chart3"></div>
+	</div>
+	<h1>4. Responsive Line Chart</h1>
+	<div class="chart4-container">
+		<div class="ct-chart ct-golden-section" id="chart4"></div>
+	</div>
+	<h1>5. Line Chart with different configuration for different series</h1>
+	<div class="chart5-container">
+		<div class="ct-chart ct-golden-section" id="chart5"></div>
+	</div>
+	<h1>6. Line Chart custom styling</h1>
+	<div class="chart6-container">
+		<div class="ct-chart ct-golden-section" id="chart6"></div>
+	</div>
+	<h1>7. Bar Chart custom styling</h1>
+	<div class="chart7-container">
+		<div class="ct-chart ct-golden-section" id="chart7"></div>
+	</div>
+	<h1>8. Pie Chart custom styling</h1>
+	<div class="chart8-container">
+		<div class="ct-chart ct-golden-section" id="chart8"></div>
+	</div>
+	<h1>9. Donut Chart custom styling</h1>
+	<div class="chart9-container">
+		<div class="ct-chart ct-golden-section" id="chart9"></div>
+	</div>
+	<h1>10. Using draw events to modify chart elements</h1>
+	<div class="chart10-container">
+		<div class="ct-chart ct-golden-section" id="chart10"></div>
+	</div>
+	<h1>11. Animations using Chartist.Svg</h1>
+	<div class="chart11-container">
+		<div class="ct-chart ct-golden-section" id="chart11"></div>
+	</div>
+	<h1>12. Creating an XY-plot chart</h1>
+	<div class="chart12-container">
+		<div class="ct-chart ct-golden-section" id="chart12"></div>
+	</div>
+	<h1>13. Creating a Fixed XY-plot chart</h1>
+	<div class="chart13-container">
+		<div class="ct-chart ct-golden-section" id="chart13"></div>
+	</div>
+
+	<script src="chartist-js-develop/dist/chartist.min.js"></script>
+	<script type="text/javascript">
+		
+		// Giving chart2 fixed dimensions
+		var optionsC2 = {
+		  width: 400,
+		  height: 300
+		};
+
+		// Chart3 labels and data series
+		var dataC3 = {
+		  labels: ['Week1', 'Week2', 'Week3', 'Week4', 'Week5', 'Week6'],
+		  series: [
+		    [5, 4, 3, 7, 5, 10],
+		    [3, 2, 9, 5, 4, 6],
+		    [2, 1, -3, -4, -2, 0]
+		  ]
+		};
+
+		// Setting a few options for Chart3 and override the defaults START
+		var optionsC3 = {
+		  // Don't draw the line chart points
+		  showPoint: false,
+		  // Disable line smoothing
+		  lineSmooth: false,
+		  // X-Axis specific configuration
+		  axisX: {
+		    // We can disable the grid for this axis
+		    showGrid: false,
+		    // and also don't show the label
+		    showLabel: false
+		  },
+		  // Y-Axis specific configuration
+		  axisY: {
+		    // Lets offset the chart a bit from the labels
+		    offset: 60,
+		    // The label interpolation function enables you to modify the values
+		    // used for the labels on each axis. Here we are converting the
+		    // values into million pound.
+		    labelInterpolationFnc: function(value) {
+		      return '$' + value + 'm';
+		    }
+		  }
+		};
+		// Setting a few options for Chart3 and override the defaults ENDS
+
+		// Chart4 Options and Responsive setting overrides STARTS
+		var dataC4 = {
+		  labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+		    series: [
+		    [5, 4, 3, 7, 5, 10, 3, 4, 8, 10, 6, 8],
+		    [3, 2, 9, 5, 4, 6, 4, 6, 7, 8, 7, 4]
+		  ]
+		};
+
+		var optionsC4 = {
+		  seriesBarDistance: 15
+		};
+
+		var responsiveOptionsC4 = [
+		  ['screen and (min-width: 641px) and (max-width: 1024px)', {
+		    seriesBarDistance: 10,
+		    axisX: {
+		      labelInterpolationFnc: function (value) {
+		        return value;
+		      }
+		    }
+		  }],
+		  ['screen and (max-width: 640px)', {
+		    seriesBarDistance: 5,
+		    axisX: {
+		      labelInterpolationFnc: function (value) {
+		        return value[0];
+		      }
+		    }
+		  }]
+		];
+		// Chart4 Options and Responsive setting overrides ENDS
+
+		// Chart5 STARTS
+		var chart5 = new Chartist.Line('#chart5', {
+		  labels: ['1', '2', '3', '4', '5', '6', '7', '8'],
+		  // Naming the series with the series object array notation
+		  series: [{
+		    name: 'series-1',
+		    data: [5, 2, -4, 2, 0, -2, 5, -3]
+		  }, {
+		    name: 'series-2',
+		    data: [4, 3, 5, 3, 1, 3, 6, 4]
+		  }, {
+		    name: 'series-3',
+		    data: [2, 4, 3, 1, 4, 5, 3, 2]
+		  }]
+		}, {
+		  fullWidth: true,
+		  // Within the series options you can use the series names
+		  // to specify configuration that will only be used for the
+		  // specific series.
+		  series: {
+		    'series-1': {
+		      lineSmooth: Chartist.Interpolation.step()
+		    },
+		    'series-2': {
+		      lineSmooth: Chartist.Interpolation.simple(),
+		      showArea: true
+		    },
+		    'series-3': {
+		      showPoint: false
+		    }
+		  }
+		}, [
+		  // You can even use responsive configuration overrides to
+		  // customize your series configuration even further!
+		  ['screen and (max-width: 320px)', {
+		    series: {
+		      'series-1': {
+		        lineSmooth: Chartist.Interpolation.none()
+		      },
+		      'series-2': {
+		        lineSmooth: Chartist.Interpolation.none(),
+		        showArea: false
+		      },
+		      'series-3': {
+		        lineSmooth: Chartist.Interpolation.none(),
+		        showPoint: true
+		      }
+		    }
+		  }]
+		]);
+		// Chart5 ENDS
+
+		// Chart10 STARTS
+		var count = 45;
+		var max = 100;
+
+		// Creating a bar chart with no labels and a series array with one series. For the series we generate random data with `count` elements and random data ranging from 0 to `max`.
+		var chart = new Chartist.Bar('#chart10', {
+		  labels: Chartist.times(count),
+		  series: [
+		    Chartist.times(count).map(Math.random).map(Chartist.mapMultiply(max))
+		  ]
+		}, {
+		  axisX: {
+		    showLabel: false
+		  },
+		  axisY: {
+		    onlyInteger: true
+		  }
+		});
+		// This is the bit we are actually interested in. By registering a callback for `draw` events, we can actually intercept the drawing process of each element on the chart.
+		chart.on('draw', function(context) {
+		  // First we want to make sure that only do something when the draw event is for bars. Draw events do get fired for labels and grids too.
+		  if(context.type === 'bar') {
+		    // With the Chartist.Svg API we can easily set an attribute on our bar that just got drawn
+		    context.element.attr({
+		      // Now we set the style attribute on our bar to override the default color of the bar. By using a HSL colour we can easily set the hue of the colour dynamically while keeping the same saturation and lightness. From the context we can also get the current value of the bar. We use that value to calculate a hue between 0 and 100 degree. This will make our bars appear green when close to the maximum and red when close to zero.
+		      style: 'stroke: hsl(' + Math.floor(Chartist.getMultiValue(context.value) / max * 100) + ', 50%, 50%);'
+		    });
+		  }
+		});
+		// Chart10 ENDS
+
+		// Chart11 STARTS
+		var chart = new Chartist.Line('#chart11', {
+		  labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
+		  series: [
+		    [12, 4, 2, 8, 5, 4, 6, 2, 3, 3, 4, 6],
+		    [4, 8, 9, 3, 7, 2, 10, 5, 8, 1, 7, 10]
+		  ]
+		}, {
+		  low: 0,
+		  showLine: false,
+		  axisX: {
+		    showLabel: false,
+		    offset: 0
+		  },
+		  axisY: {
+		    showLabel: false,
+		    offset: 0
+		  }
+		});
+
+		// Let's put a sequence number aside so we can use it in the event callbacks
+		var seq = 0;
+
+		// Once the chart is fully created we reset the sequence
+		chart.on('created', function() {
+		  seq = 0;
+		});
+
+		// On each drawn element by Chartist we use the Chartist.Svg API to trigger SMIL animations
+		chart.on('draw', function(data) {
+		  if(data.type === 'point') {
+		    // If the drawn element is a line we do a simple opacity fade in. This could also be achieved using CSS3 animations.
+		    data.element.animate({
+		      opacity: {
+		        // The delay when we like to start the animation
+		        begin: seq++ * 80,
+		        // Duration of the animation
+		        dur: 500,
+		        // The value where the animation should start
+		        from: 0,
+		        // The value where it should end
+		        to: 1
+		      },
+		      x1: {
+		        begin: seq++ * 80,
+		        dur: 500,
+		        from: data.x - 100,
+		        to: data.x,
+		        // You can specify an easing function name or use easing functions from Chartist.Svg.Easing directly
+		        easing: Chartist.Svg.Easing.easeOutQuart
+		      }
+		    });
+		  }
+		});
+
+		// For the sake of the example we update the chart every time it's created with a delay of 8 seconds
+		chart.on('created', function() {
+		  if(window.__anim0987432598723) {
+		    clearTimeout(window.__anim0987432598723);
+		    window.__anim0987432598723 = null;
+		  }
+		  window.__anim0987432598723 = setTimeout(chart.update.bind(chart), 8000);
+		});
+		// Chart11 ENDS
+
+		// Initialize a Line chart in the container with the ID chart1
+		new Chartist.Line('#chart1', {
+			labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
+			series: [[5, 2, 4, 2, 0]]
+		});
+
+		// Initialize a Line chart in the container with the ID chart2
+		new Chartist.Line('#chart2', {
+			labels: [1, 2, 3, 4],
+			series: [[5, 2, 8, 3]]
+		}, optionsC2);
+
+		// Initialize a Line chart in the container with the ID chart3
+		new Chartist.Line('#chart3', dataC3, optionsC3);
+
+		// Initialize a Line chart in the container with the ID chart4
+		new Chartist.Bar('#chart4', dataC4, optionsC4, responsiveOptionsC4);
+
+		// Chart5 initialized with var data above
+
+		// Initialize a Line chart in the container with the ID chart6
+		new Chartist.Line('#chart6', {
+			labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
+			series: [[5, 2, 4, 2, 0]]
+		});
+
+		// Initialize a Line chart in the container with the ID chart7
+		new Chartist.Bar('#chart7', {
+			labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
+			series: [[5, 2, 4, 2, 0.5]]
+		});
+
+		// Initialize a Line chart in the container with the ID chart8
+		new Chartist.Pie('#chart8', {
+		  series: [10, 2, 4, 3]
+		});
+
+		// Initialize a Line chart in the container with the ID chart9
+		new Chartist.Pie('#chart9', {
+		  series: [20, 10, 30, 40]
+		}, {
+		  donut: true,
+		  donutWidth: 50,
+		  startAngle: 270,
+		  total: 200
+		});
+
+		// Chart10 initialized with var data above
+
+		// Chart11 initialized with var data above
+
+		// Initialize a Line chart in the container with the ID chart12
+		new Chartist.Line('#chart12', {
+		  series: [[
+		    {x: 1, y: 100},
+		    {x: 2, y: 50},
+		    {x: 3, y: 25},
+		    {x: 5, y: 12.5},
+		    {x: 8, y: 6.25}
+		  ]]
+		}, {
+		  axisX: {
+		    type: Chartist.AutoScaleAxis,
+		    onlyInteger: true
+		  }
+		});
+
+		// Initialize a Line chart in the container with the ID chart13
+		new Chartist.Line('#chart13', {
+		  series: [[
+		    {x: 1, y: 100},
+		    {x: 2, y: 50},
+		    {x: 3, y: 25},
+		    {x: 5, y: 12.5},
+		    {x: 8, y: 6.25}
+		  ]]
+		}, {
+		  axisX: {
+		    type: Chartist.AutoScaleAxis,
+		    onlyInteger: true
+		  },
+		  axisY: {
+		    type: Chartist.FixedScaleAxis,
+		    ticks: [0, 50, 75, 87.5, 100],
+		    low: 0
+		  },
+		  lineSmooth: Chartist.Interpolation.step(),
+		  showPoint: false
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,174 @@
+/*custom CSS*/
+html,body {
+    margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+h1 {
+	color: #222;
+	font-family: 'Spicy Rice', cursive;
+	width: auto;
+	margin: 0 auto;
+	text-align: center;
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+
+.chart1-container {
+	/*background-color: blue;*/
+	width: 500px;
+	margin: 0 auto;
+	margin-bottom: 20px;
+}
+
+.chart2-container {
+	/*background-color: red;*/
+	width: 500px;
+	margin: 0 auto;
+	margin-bottom: 20px;
+}
+
+.chart3-container {
+	/*background-color: green;*/
+	width: 500px;
+	margin: 0 auto;
+	margin-bottom: 20px;
+}
+
+.chart4-container {
+	/*background-color: purple;*/
+	width: 500px;
+	margin: 0 auto;
+	margin-bottom: 20px;
+}
+
+.chart5-container {
+	/*background-color: orange;*/
+	width: 500px;
+	margin: 0 auto;
+	margin-bottom: 20px;
+}
+
+.chart6-container {
+	/*background-color: pink;*/
+	width: 500px;
+	margin: 0 auto;
+	margin-bottom: 20px;
+}
+
+/*custom styling for chart6 STARTS*/
+#chart6 .ct-line {
+  /* Set the colour of this series line */
+  stroke: red;
+  /* Control the thikness of your lines */
+  stroke-width: 5px;
+  /* Create a dashed line with a pattern */
+  stroke-dasharray: 10px 20px;
+}
+
+#chart6 .ct-point {
+  /* Colour of your points */
+  stroke: red;
+  /* Size of your points */
+  stroke-width: 20px;
+  /* Make your points appear as squares */
+  stroke-linecap: square;
+}
+/*custom styling for chart6 ENDS*/
+
+.chart7-container {
+	/*background-color: yellow;*/
+	width: 500px;
+	margin: 0 auto;
+	margin-bottom: 20px;
+}
+
+/*custom styling for chart7 STARTS*/
+#chart7 .ct-bar {
+  /* Colour of your bars */
+  stroke: red;
+  /* The width of your bars */
+  stroke-width: 20px;
+  /* Yes! Dashed bars! */
+  stroke-dasharray: 30px;
+  /* Maybe you like round corners on your bars? */
+  stroke-linecap: round;
+}
+/*custom styling for chart7 ENDS*/
+
+
+.chart8-container {
+	/*background-color: grey;*/
+	width: 500px;
+	margin: 0 auto;
+	margin-bottom: 20px;
+}
+
+/*custom styling for chart8 STARTS*/
+/* Pie charts consist of solid slices where you can use this selector to override the default style. */
+#chart8 .ct-slice-pie {
+  /* fill of the pie slieces */
+  fill: hsl(220, 80%, 60%);
+  /* give your pie slices some outline or separate them visually by using the background color here */
+  stroke: white;
+  /* outline width */
+  stroke-width: 4px;
+}
+/*custom styling for chart8 ENDS*/
+
+.chart9-container {
+	/*background-color: lime;*/
+	width: 500px;
+	margin: 0 auto;
+	margin-bottom: 20px;
+}
+
+/*custom styling for chart9 STARTS*/
+#chart9 .ct-slice-donut {
+  /* give the donut slice a custom colour */
+  /*stroke: blue;*/
+  /* customize stroke width of the donut slices in CSS. Note that this property is already set in JavaScript and label positioning also relies on this. In the right situation though it can be very useful to style this property. You need to use !important to override the style attribute */
+  stroke-width: 50px !important;
+  /* create modern looking rounded donut charts */
+  stroke-linecap: round;
+}
+#chart9 .ct-series-a .ct-slice-donut {
+	stroke: red;
+}
+
+#chart9 .ct-series-b .ct-slice-donut {
+	stroke: orange;
+}
+/*custom styling for chart9 ENDS*/
+
+.chart10-container {
+	/*background-color: magenta;*/
+	width: 500px;
+	margin: 0 auto;
+	margin-bottom: 20px;
+}
+
+.chart11-container {
+	/*background-color: cyan;*/
+	width: 500px;
+	margin: 0 auto;
+	margin-bottom: 20px;
+}
+
+.chart12-container {
+	/*background-color: red;*/
+	width: 500px;
+	margin: 0 auto;
+	margin-bottom: 20px;
+}
+
+.chart13-container {
+	/*background-color: orange;*/
+	width: 500px;
+	margin: 0 auto;
+	margin-bottom: 20px;
+}
